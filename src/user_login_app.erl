@@ -21,7 +21,7 @@ stop(_) -> nitrogen:stop().
 %% from "/web/newroute" to the web_index module, 
 %% with trailing PathInfo included:
 %%
-%% route("/web/newroute/" ++ PathInfo) -> {web_index, PathInfo};
+route("/user") -> web_users_login;
 
 route(Path) -> nitrogen:route(Path).
 

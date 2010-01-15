@@ -21,7 +21,7 @@
 -module(web_users_register).
 -include_lib("nitrogen/include/wf.inc").
 -include_lib("nitrogen_elements/include/nitrogen_elements.hrl").
-%-include_lib("nitrogen_elements/src/element_recaptcha/elements.hrl").
+%%-include_lib("nitrogen_elements/src/element_recaptcha/elements.hrl").
 -compile(export_all).
 
 main() ->
@@ -51,7 +51,7 @@ body() ->
 	    #br {},
 	    #password { id=password2 },
 	    #br {},
-	    #recaptcha { id=recaptcha, public_key="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" },
+	    %%#recaptcha { id=recaptcha, public_key="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" },
 	    #br {},
 	    #button { id=submit, text="Register", postback=register },
 	    #flash { id=flash },
@@ -99,7 +99,7 @@ is_email_used(_, _) ->
     db_users:is_email_used(hd(wf:q(email_address))).
 
 check_username(_, _) ->
-    case regexp:first_match(hd(wf:q(username)), "[^A-z0-9.]") of % not a letter, not a number, or not a period
+    case re:first_match(hd(wf:q(username)), "[^A-z0-9.]") of % not a letter, not a number, or not a period
 	nomatch ->
 	    true;
 	_ ->

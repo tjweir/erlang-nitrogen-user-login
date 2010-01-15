@@ -10,4 +10,5 @@ erl \
     -eval "application:load(esmtp)" \
     -eval "application:start(esmtp)" \
     -eval "db_utils:start()" \
-    -config "/opt/local/lib/erlang/releases/R12B/start.config"
+    
+#-config "/Users/tjweir/g/homebrew/Cellar/erlang/R13B03/lib/erlang/releases/R13B03/start.script"
